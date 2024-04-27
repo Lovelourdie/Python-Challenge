@@ -2,10 +2,11 @@ import os
 import csv
 
 #This is the path to the file from my deskstop
-csvpath = r"/Users/lovelorissaint/Desktop/Python-Challenge/PyBank/Resources/budget_data.csv"
+current_dir =os.getcwd()
+csvpath = "PyBank/Resources/budget_data.csv"
 
 #this opens the file, scans,prints the header
-with open (csvpath) as csvfile:
+with open (os.path.join(current_dir, csvpath)) as csvfile:
     csvreader = csv. reader(csvfile, delimiter=',')
     print("Financial Analysis")
     print("----------------------------")
@@ -46,7 +47,7 @@ with open (csvpath) as csvfile:
     print(f"Greatest Increase in Profits: {max_date} (${max_change})")
     print(f"Greatest Decrease in Profits: {min_date} (${min_change})")
     
-    with open("result_PyBank.txt","w") as file:
+    with open(os.path.join(current_dir, "PyBank", "Analysis","result_PyBank.txt"),"w") as file:
         file.write("Financial Analysis\n") 
         file.write("----------------------------\n") 
         file.write(f"Total Months: {(len(date))}\n") 

@@ -2,8 +2,8 @@ import os
 import csv
 
 #This is the path to the file from my deskstop
-csvpath = r"/Users/lovelorissaint/Desktop/Python-Challenge/PyPoll/Resources/election_data.csv"
-
+current_dir =os.getcwd()
+csvpath = "PyPoll/Resources/election_data.csv"
 #this opens the file, scans,prints the header
 with open (csvpath) as csvfile:
     csvreader = csv. reader(csvfile, delimiter=',')
@@ -43,7 +43,9 @@ with open (csvpath) as csvfile:
     print("Winner: Diana DeGette")
     print("----------------------------")
 
-    with open("result_PyPoll.txt","w") as file:
+
+    with open(os.path.join(current_dir, "PyPoll", "Analysis","result_PyPoll.txt"),"w") as file:
+
         file.write("Election Results\n")
         file.write("----------------------------\n")
         file.write(f"Total Votes: {len(vote_id)}\n")
